@@ -1,0 +1,52 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Recipe Ingredient #<%= recipe_ingredient.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Recipe</dt>
+      <dd>
+        <% if @recipe_ingredient.recipe.present? %>
+          <%= link_to recipe_ingredient.recipe, recipe_ingredient.recipe %>
+        <% end %>
+      </dd>
+
+      <dt>Ingredient</dt>
+      <dd>
+        <% if @recipe_ingredient.ingredient.present? %>
+          <%= link_to recipe_ingredient.ingredient, recipe_ingredient.ingredient %>
+        <% end %>
+      </dd>
+
+      <dt>Amount</dt>
+      <dd><%= recipe_ingredient.amount %></dd>
+
+      <dt>Units</dt>
+      <dd><%= recipe_ingredient.units %></dd>
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back recipe_ingredient, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <div class="col">
+        <%= link_to edit_recipe_ingredient_url(recipe_ingredient), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+
+      <div class="col">
+        <%= link_to recipe_ingredient, method: :delete, data: { confirm: "Do you really want to delete this recipe_ingredient?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(recipe_ingredient.updated_at) %> ago
+  </div>
+</div>

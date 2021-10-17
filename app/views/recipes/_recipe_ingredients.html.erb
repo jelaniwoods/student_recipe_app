@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Ingredients
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @recipe.ingredients.each do |ingredient| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <a href="/ingredients/<%= ingredient.id %>">
+          <%= ingredient %>
+        </a>
+
+      </li>
+    <% end %>
+
+  </ul>
+</div>

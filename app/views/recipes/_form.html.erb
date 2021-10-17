@@ -1,0 +1,115 @@
+<% was_validated = recipe.errors.any? %>
+
+<%= form_with(model: recipe, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <div class="form-group">
+    <% name_class = "form-control" %>
+    <% name_was_invalid = recipe.errors.include?(:name) %>
+
+    <% if was_validated %>
+      <% if name_was_invalid %>
+        <% name_class << " is-invalid" %>
+      <% else %>
+        <% name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, class: name_class, placeholder: "Enter name" %>
+    <% if name_was_invalid %>
+      <% recipe.errors.full_messages_for(:name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <% instruction_class = "form-control" %>
+    <% instruction_was_invalid = recipe.errors.include?(:instruction) %>
+
+    <% if was_validated %>
+      <% if instruction_was_invalid %>
+        <% instruction_class << " is-invalid" %>
+      <% else %>
+        <% instruction_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :instructions %>
+    <%= f.text_area :instructions, class: instruction_class, placeholder: "Enter instruction" %>
+    <% if instruction_was_invalid %>
+      <% recipe.errors.full_messages_for(:instruction).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <% total_time_class = "form-control" %>
+    <% total_time_was_invalid = recipe.errors.include?(:total_time) %>
+
+    <% if was_validated %>
+      <% if total_time_was_invalid %>
+        <% total_time_class << " is-invalid" %>
+      <% else %>
+        <% total_time_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :total_time %>
+    <%= f.number_field :total_time, class: total_time_class, placeholder: "Enter total time" %>
+    <% if total_time_was_invalid %>
+      <% recipe.errors.full_messages_for(:total_time).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <% image_class = "form-control" %>
+    <% image_was_invalid = recipe.errors.include?(:image) %>
+
+    <% if was_validated %>
+      <% if image_was_invalid %>
+        <% image_class << " is-invalid" %>
+      <% else %>
+        <% image_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :image %>
+    <%= f.file_field :image, class: "form-control" %>
+    <% if image_was_invalid %>
+      <% recipe.errors.full_messages_for(:image).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <% category_class = "form-control" %>
+    <% category_was_invalid = recipe.errors.include?(:category) %>
+
+    <% if was_validated %>
+      <% if category_was_invalid %>
+        <% category_class << " is-invalid" %>
+      <% else %>
+        <% category_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :category_id %>
+    <%= f.collection_select :category_id, Category.all, :id, :to_s, {}, class: "form-control" %>
+    <% if category_was_invalid %>
+      <% recipe.errors.full_messages_for(:category).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

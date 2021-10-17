@@ -1,0 +1,24 @@
+<%= form_with(model: @recipe_ingredient, local: true) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :recipe_id %>
+
+    <%= f.collection_select :recipe_id, Recipe.all, :id, :to_s, {}, class: "form-control" %>
+  </div>
+
+  <%= f.hidden_field :ingredient_id, value: @ingredient.id %>
+
+  <div class="form-group">
+    <%= f.label :amount %>
+
+    <%= f.text_field :amount, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :units %>
+
+    <%= f.text_field :units, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Create recipe ingredient", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

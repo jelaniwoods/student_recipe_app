@@ -1,0 +1,53 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Recipe #<%= recipe.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Name</dt>
+      <dd><%= recipe.name %></dd>
+
+      <dt>Instructions</dt>
+      <dd><%= recipe.instructions %></dd>
+
+      <dt>Total time</dt>
+      <dd><%= recipe.total_time %></dd>
+
+      <dt>Image</dt>
+      <dd>
+        <%= cl_image_tag @recipe.image, class: "img-fluid" %>
+      </dd>
+
+      <dt>Category</dt>
+      <dd>
+        <% if @recipe.category.present? %>
+          <%= link_to recipe.category, recipe.category %>
+        <% end %>
+      </dd>
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back recipe, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <div class="col">
+        <%= link_to edit_recipe_url(recipe), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+
+      <div class="col">
+        <%= link_to recipe, method: :delete, data: { confirm: "Do you really want to delete this recipe?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(recipe.updated_at) %> ago
+  </div>
+</div>
