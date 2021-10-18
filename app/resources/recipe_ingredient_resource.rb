@@ -6,6 +6,7 @@ class RecipeIngredientResource < ApplicationResource
   attribute :ingredient_id, :integer
   attribute :amount, :integer
   attribute :units, :string
+  attribute :tmp, :string
 
   # Direct associations
 

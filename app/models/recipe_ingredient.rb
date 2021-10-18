@@ -9,6 +9,10 @@ class RecipeIngredient < ApplicationRecord
 
   # Validations
 
+  validates :amount, presence: true
+
+  validates :units, presence: true
+
   # Scopes
 
   def to_s

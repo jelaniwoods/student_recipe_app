@@ -16,6 +16,10 @@ class Recipe < ApplicationRecord
 
   # Validations
 
+  validates :instructions, presence: true
+
+  validates :name, presence: true
+
   # Scopes
 
   def to_s
