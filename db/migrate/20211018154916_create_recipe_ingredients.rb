@@ -5,6 +5,7 @@ class CreateRecipeIngredients < ActiveRecord::Migration[6.0]
       t.integer :ingredient_id
       t.integer :amount
       t.string :units
+      t.string :tmp
 
       t.timestamps
     end
