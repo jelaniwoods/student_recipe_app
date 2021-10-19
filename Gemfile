@@ -44,6 +44,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "activeadmin", "2.2.0"
+gem "active_admin_import"
 gem "carrierwave"
 gem "cloudinary"
 gem "coffee-rails"
